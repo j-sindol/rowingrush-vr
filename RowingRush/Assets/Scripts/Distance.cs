@@ -255,8 +255,9 @@ public class Distance : MonoBehaviour
 
     void LateUpdate()
     {
+        //시연 영상으로는 TargetDistance/1000 m 갔을 때 멈추는 걸로 구현해놓음 - 추후 수정 필요
 
-        if (BoatDistance > TargetDistance && isFinishMenu == true)
+        if (BoatDistance > TargetDistance/100 && isFinishMenu == true)
         {
             _Boat.GetComponent<BoatControl>().enabled = false;
             StopCoroutine("Timer");

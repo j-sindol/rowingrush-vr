@@ -25,7 +25,7 @@ public class BoatControl : MonoBehaviour
         //if (currentPosition.z > oldPosition.z)
         //{
         float distance = (currentPosition - oldPosition).magnitude * Time.deltaTime;
-        boat.transform.Translate(0, 0, distance*10);
+        boat.transform.Translate(0, 0, distance*13);
         //}
         oldPosition = currentPosition;
         
