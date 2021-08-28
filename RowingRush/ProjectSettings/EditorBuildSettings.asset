@@ -12,10 +12,13 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneUI/account.unity
     guid: 58fd71b6cc482874088f9c28ded51807
   - enabled: 1
-    path: Assets/Scenes/SceneUI/Login.unity
+    path: Assets/Scenes/SceneUI/login.unity
     guid: 2c205252c63aa5344a282ceb55b431fa
   - enabled: 1
-    path: Assets/Scenes/SceneUI/Third.unity
+    path: Assets/Scenes/SceneUI/signup.unity
+    guid: 980260145f998ac4eae7c645abf9f942
+  - enabled: 1
+    path: Assets/Scenes/SceneUI/third.unity
     guid: 72216caee847cf14bbd4ddaa47be17e8
   - enabled: 1
     path: Assets/Scenes/SceneUI/E_Start.unity

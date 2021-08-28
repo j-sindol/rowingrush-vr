@@ -7,11 +7,17 @@ using TMPro;
 
 public class Distance : MonoBehaviour
 {
+
+    public GameObject paddle;
+    public GameObject paddle1;
+
+
     public GameObject _Boat;
     public GameObject FinishMenu;
     public GameObject Ranking;
     public GameObject StartUI;
     public GameObject _Time;
+    public GameObject Canvas;
 
 
     public TextMeshProUGUI countText;
@@ -230,9 +236,54 @@ public class Distance : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(3);
         FinishMenu.SetActive(false);
+        Canvas.SetActive(false);
         Ranking.SetActive(true);
 
     }
+
+    IEnumerator TimeRotation(GameObject target, float time)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(time);
+            target.transform.Rotate(0f, 1f, 0f);
+            yield return new WaitForSeconds(time);
+            target.transform.Rotate(-0f, -1f, -0f);
+            yield return new WaitForSeconds(time);
+            target.transform.Rotate(-0f, -1f, -0f);
+            yield return new WaitForSeconds(time);
+            target.transform.Rotate(0f, 1f, 0f);
+
+            if (speed <= 2)
+            {
+                yield break;
+            }
+        }
+
+    }
+
+    IEnumerator TimeRotation1(GameObject target, float time)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(time);
+            target.transform.Rotate(-0f, -1f, -0f);
+            yield return new WaitForSeconds(time);
+            target.transform.Rotate(0f, 1f, 0f);
+            yield return new WaitForSeconds(time);
+            target.transform.Rotate(0f, 1f, 0f);
+            yield return new WaitForSeconds(time);
+            target.transform.Rotate(-0f, -1f, -0f);
+
+
+            if (speed <= 2)
+            {
+                yield break;
+            }
+        }
+
+    }
+
 
 
     public void Start()
@@ -251,13 +302,21 @@ public class Distance : MonoBehaviour
         StartCoroutine("CalDistance");
         StartCoroutine("CalSpeed");
 
+        if (speed > 3)
+        {
+            StartCoroutine(TimeRotation(paddle, 1f));
+            StartCoroutine(TimeRotation1(paddle1, 1f));
+
+        }
+
+
     }
 
     void LateUpdate()
     {
-        //시연 영상으로는 TargetDistance/1000 m 갔을 때 멈추는 걸로 구현해놓음 - 추후 수정 필요
+        //시연 영상으로는 TargetDistance/10 m 갔을 때 멈추는 걸로 구현해놓음 - 추후 수정 필요
 
-        if (BoatDistance > TargetDistance/100 && isFinishMenu == true)
+        if (BoatDistance > TargetDistance/10 && isFinishMenu == true)
         {
             _Boat.GetComponent<BoatControl>().enabled = false;
             StopCoroutine("Timer");
@@ -265,6 +324,9 @@ public class Distance : MonoBehaviour
             StopCoroutine("CalSpeed");
             FinishMenu.SetActive(true);
             StartCoroutine("curScore");
+
+           
+
 
 
         }

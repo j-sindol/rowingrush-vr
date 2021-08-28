@@ -22,11 +22,10 @@ public class BoatControl : MonoBehaviour
     {
         currentPosition = camera.transform.position;
 
-        //if (currentPosition.z > oldPosition.z)
-        //{
+        
         float distance = (currentPosition - oldPosition).magnitude * Time.deltaTime;
+        Debug.Log(distance);
         boat.transform.Translate(0, 0, distance*13);
-        //}
         oldPosition = currentPosition;
         
     }
