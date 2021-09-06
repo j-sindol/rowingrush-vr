@@ -6,30 +6,29 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+[System.Serializable]
+public class GoogleData
+{
+    public string order, result, msg, distance, time, speed;
+}
+
 
 public class GSmanager : MonoBehaviour
 {
     const string URL = "https://script.google.com/macros/s/AKfycbxc5R_Y7zTad80LiUs_O-6wE889DjIquIuirMARMTgOFqGOdsJ3/exec";
+    public GoogleData GD;
+
+
+
     public InputField IDInput, PassInput;
-    public TextMeshProUGUI message;
+    public TextMeshProUGUI message, myID;
     string id, pass;
 
-    IEnumerator Start()
-    {
-        WWWForm form = new WWWForm();
-        form.AddField("value", "값");
-        UnityWebRequest www = UnityWebRequest.Post(URL, form);
-        yield return www.SendWebRequest();
+    string jsondata;
 
-        string data = www.downloadHandler.text;
-        print(data);
-        //int a = data.IndexOf("{");
-        //int b = data.LastIndexOf("}");
-        //data.Remove(a, b );
-        //int c = data.
-        message.text = data;
 
-    }
+
+
 
     bool SetIDPass()
     {
@@ -66,11 +65,13 @@ public class GSmanager : MonoBehaviour
         }
 
         WWWForm form = new WWWForm();
+
         form.AddField("order", "login");
         form.AddField("id", id);
         form.AddField("pass", pass);
 
         StartCoroutine(Post(form));
+
     }
 
     void OnApplicationQuit()
@@ -80,6 +81,19 @@ public class GSmanager : MonoBehaviour
 
         StartCoroutine(Post(form));
     }
+    public void SetValue(string a, string b, string c)
+    {
+
+        WWWForm form = new WWWForm();
+        form.AddField("order", "setValue");
+        form.AddField("distance", a);
+        form.AddField("time", b);
+        form.AddField("speed", c);
+
+        StartCoroutine(Post(form));
+    }
+
+
 
     IEnumerator Post(WWWForm form)
     {
@@ -89,8 +103,18 @@ public class GSmanager : MonoBehaviour
 
             if (www.isDone)
             {
-                print(www.downloadHandler.text);
-                message.text = www.downloadHandler.text;
+                Response(www.downloadHandler.text);
+
+                string[] data = www.downloadHandler.text.Split(new char[] { '"' });
+                message.text = data[data.Length - 2];
+                string S1 = www.downloadHandler.text;
+                string S2 = "log in succeed";
+
+                if (S1.Contains(S2))
+                {
+                    SceneManager.LoadScene("third");
+
+                }
             }
             else
             {
@@ -98,6 +122,26 @@ public class GSmanager : MonoBehaviour
                 message.text = "No response from the web.";
             }
         }
+    }
+
+    void Response(string json)
+    {
+        if (string.IsNullOrEmpty(json))
+        {
+            return;
+        }
+
+        GD = JsonUtility.FromJson<GoogleData>(json);
+
+        if (GD.result == "ERROR")
+        {
+            print(GD.order + "을 실행할 수 없습니다. 에러 메시지 : " + GD.msg);
+            return;
+        }
+
+        print(GD.order + "을 실행했습니다. 메시지 : " + GD.msg);
+
+
     }
 
 
@@ -111,4 +155,5 @@ public class GSmanager : MonoBehaviour
         SceneManager.LoadScene("signup");
 
     }
+
 }
