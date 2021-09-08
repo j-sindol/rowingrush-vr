@@ -29,12 +29,14 @@ public class KeyboardHit : MonoBehaviour
     char[] IDChar = new char[30];
     char[] PWChar = new char[30];
 
-    public GameObject Keyboard;
+    public GameObject KeyboardLower;
+    public GameObject KeyboardUpper;
 
     public void OnClickID()
     {
         //ID 입력 칸 누르면 키보드ui 활성화시키고 ID 입력 칸에만 입력 받기
-        Keyboard.SetActive(true);
+        KeyboardLower.SetActive(true);
+        KeyboardUpper.SetActive(false);
         isIDInput = true;
         isPWInput = false;
     }
@@ -42,7 +44,8 @@ public class KeyboardHit : MonoBehaviour
     public void OnClickPW()
     {
         //PW 입력 칸 누르면 키보드ui 활성화시키고 PW 입력 칸에만 입력 받기
-        Keyboard.SetActive(true);
+        KeyboardLower.SetActive(true);
+        KeyboardUpper.SetActive(false);
         isPWInput = true;
         isIDInput = false;
     }
@@ -50,11 +53,27 @@ public class KeyboardHit : MonoBehaviour
     public void OnClickEnter()
     {
         //enter 누르면 키보드ui 비활성화
-        Keyboard.SetActive(false);
+        KeyboardLower.SetActive(false);
+        KeyboardUpper.SetActive(false);
+    }
+
+    public void OnClickUpper()
+    {
+        //위쪽 화살표 버튼 누르면 대문자로 변환
+
+        //소문자 키보드가 활성화되어 있으면 1, 대문자 키보드가 활성화되어 있으면 0을 반환
+        bool isKeyboardType = KeyboardLower.activeSelf == true;
+
+        //1이면 대문자 키보드 활성화, 0이면 소문자 키보드 활성화시키기
+        KeyboardLower.SetActive(!isKeyboardType);
+        KeyboardUpper.SetActive(isKeyboardType);
+
     }
 
     public void alphabetFunction(string alphabet)
     {
+        alphabet = KeyboardLower.activeSelf ? alphabet : alphabet.ToUpper();
+
         if (isIDInput)
         {
             IDIndex++;
