@@ -7,8 +7,12 @@ public class load : MonoBehaviour
 {
    public void SceneChange()
     {
-        SceneManager.LoadScene("account");
-       
+        SceneManager.LoadScene("account");    
+    }
+
+    public void Delay()
+    {
+        Invoke("SceneChange", 1);
     }
 }
 

@@ -7,16 +7,36 @@ using UnityEngine.UI;
 public class Rowing : MonoBehaviour
 {
 
-    public void SceneChange()
+    const float nSecond = 2f;
+
+    float timer = 0;
+    bool entered = false;
+
+    public void PointerEnter()
     {
-        SceneManager.LoadScene("Rowing");
-
+        entered = true;
     }
 
-
-    public void Onclick(int TargetDistance){
-        PlayerPrefs.SetInt("TargetDistance", TargetDistance);
+    public void PointerExit()
+    {
+        entered = false;
     }
 
+    void Update()
+    {
+        if (entered)
+        {
+            timer += Time.deltaTime;
+
+            if(timer > nSecond)
+            {
+                SceneManager.LoadScene("Rowing");
+            }
+        }
+        else
+        {
+            timer = 0;
+        }
+    }
     
 }

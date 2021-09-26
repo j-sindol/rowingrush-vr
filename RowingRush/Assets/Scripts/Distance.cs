@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -10,7 +9,6 @@ public class Distance : MonoBehaviour
 
     public GameObject paddle;
     public GameObject paddle1;
-
 
     public GameObject _Boat;
     public GameObject FinishMenu;
@@ -105,12 +103,6 @@ public class Distance : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
         oldPosition = currentPosition;
     }
-
-    /*IEnumerator CalSpeed()
-    {
-        curSpeedText.text = avgSpeed.ToString("F0");
-        yield return null;
-    }*/
 
     IEnumerator curScore()
     {
@@ -283,13 +275,10 @@ public class Distance : MonoBehaviour
         }
 
     }
-
-
-
+    
     public void Start()
     {
         TargetDistance = PlayerPrefs.GetInt("TargetDistance");
-
         StartCoroutine("StartCount");
         oldPosition = transform.position;
         FirstDistance = new Vector3(0,0,0);
@@ -324,11 +313,6 @@ public class Distance : MonoBehaviour
             StopCoroutine("CalSpeed");
             FinishMenu.SetActive(true);
             StartCoroutine("curScore");
-
-           
-
-
-
         }
 
     }
