@@ -6,29 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SceneUI/First.unity
+    path: Assets/Scene/SceneUI/First.unity
     guid: c732593fe76e5a84197f9cd13963f706
   - enabled: 1
-    path: Assets/Scenes/SceneUI/account.unity
+    path: Assets/Scene/SceneUI/account.unity
     guid: 58fd71b6cc482874088f9c28ded51807
   - enabled: 1
-    path: Assets/Scenes/SceneUI/login.unity
+    path: Assets/Scene/SceneUI/login.unity
     guid: 2c205252c63aa5344a282ceb55b431fa
   - enabled: 1
-    path: Assets/Scenes/SceneUI/signup.unity
+    path: Assets/Scene/SceneUI/signup.unity
     guid: 980260145f998ac4eae7c645abf9f942
   - enabled: 1
-    path: Assets/Scenes/SceneUI/third.unity
+    path: Assets/Scene/SceneUI/third.unity
     guid: 72216caee847cf14bbd4ddaa47be17e8
   - enabled: 1
-    path: Assets/Scenes/SceneUI/E_Start.unity
+    path: Assets/Scene/SceneUI/E_Start.unity
     guid: 5c0c54b53df095c4b95a2767f5337c30
   - enabled: 1
-    path: Assets/Scenes/SceneUI/BeforeRowing.unity
+    path: Assets/Scene/SceneUI/BeforeRowing.unity
     guid: eaa8650069e9c41469decb9c227999d7
   - enabled: 1
-    path: Assets/Scenes/SceneUI/Rowing.unity
+    path: Assets/Scene/SceneUI/Rowing.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/Scene/SceneUI/Room.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8d3ce7247ce06af45af0d48b81303d74, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 41f79c399bad78840ac8b33c98581db2, type: 2}
