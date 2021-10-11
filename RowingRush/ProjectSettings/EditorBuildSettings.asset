@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/SceneUI/Room.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scene/SceneUI/GameRoom.unity
+    guid: afdf3d56f5487664ebf81c657a660789
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8d3ce7247ce06af45af0d48b81303d74, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 41f79c399bad78840ac8b33c98581db2, type: 2}

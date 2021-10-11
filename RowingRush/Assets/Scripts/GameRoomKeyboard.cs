@@ -12,18 +12,32 @@ public class GameRoomKeyboard : MonoBehaviour
     string alphaID = null;
     string alphaID2 = null;
 
-    public InputField IDtext;
+    public InputField nickName;
+    public InputField roomName;
+    public InputField chatting;
 
     char[] IDChar = new char[30];
 
     public GameObject KeyboardLower;
     public GameObject KeyboardUpper;
 
+    public GameObject LobbyPanel;
+    public GameObject RoomPanel;
+
+    public InputField input;
+
+
     public void OnClickNickName()
     {
         //닉네임 입력 칸 누르면 키보드ui 활성화
         KeyboardLower.SetActive(true);
         KeyboardUpper.SetActive(false);
+
+        IDIndex = -1;
+        IDChar = new char[30];
+        alphaID = null;
+        IDword = null;
+        input.text = null;
     }
 
     public void OnClickEnter()
@@ -48,6 +62,23 @@ public class GameRoomKeyboard : MonoBehaviour
 
     public void alphabetFunction(string alphabet)
     {
+        if (RoomPanel.activeSelf)
+        {
+            input = chatting;
+            
+
+        }
+        else if (LobbyPanel.activeSelf)
+        {
+            input = roomName;
+            
+        }
+        else
+        {
+            input = nickName;
+        }
+
+
         alphabet = KeyboardLower.activeSelf ? alphabet : alphabet.ToUpper();
 
         IDIndex++;
@@ -55,8 +86,9 @@ public class GameRoomKeyboard : MonoBehaviour
         IDChar[IDIndex] = keepIDchar[0];
         alphaID = IDChar[IDIndex].ToString();
         IDword = IDword + alphabet;
-        IDtext.text = IDword;
-  
+
+        input.text = IDword;
+
     }
 
     public void backspaceFunction()
@@ -73,7 +105,8 @@ public class GameRoomKeyboard : MonoBehaviour
             }
 
             IDword = alphaID2;
-            IDtext.text = IDword;
+
+            input.text = IDword;
         }
     }
 

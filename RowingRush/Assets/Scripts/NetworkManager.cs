@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+
     [Header("DisconnectPanel")]
     public InputField NickNameInput;
 

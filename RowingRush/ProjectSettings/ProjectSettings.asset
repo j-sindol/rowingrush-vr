@@ -130,10 +130,10 @@ PlayerSettings:
   bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 0}
+  - {fileID: 0}
   - {fileID: -5698311130248516092, guid: 0bf1cf91c5a8dee48a9314fa19895f16, type: 2}
   - {fileID: -3758257398351148094, guid: 41f79c399bad78840ac8b33c98581db2, type: 2}
   - {fileID: 11400000, guid: 8d3ce7247ce06af45af0d48b81303d74, type: 2}
-  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -557,6 +557,7 @@ PlayerSettings:
   ps4videoRecordingFeaturesUsed: 0
   ps4contentSearchFeaturesUsed: 0
   ps4CompatibilityPS5: 0
+  ps4AllowPS5Detection: 0
   ps4GPU800MHz: 1
   ps4attribEyeToEyeDistanceSettingVR: 0
   ps4IncludedModules:
